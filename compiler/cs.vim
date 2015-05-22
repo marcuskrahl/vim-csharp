@@ -17,5 +17,10 @@ CompilerSet errorformat&
 CompilerSet errorformat+=%f(%l\\,%v):\ %t%*[^:]:\ %m,
             \%trror%*[^:]:\ %m,
             \%tarning%*[^:]:\ %m
+if has('win32')
+    let net_compiler = "csc.exe"
+else
+    let net_compiler = "mcs"
+endif
 
-execute 'CompilerSet makeprg=' . cs#get_net_compiler("csc.exe") . "\\ %"
+execute 'CompilerSet makeprg=' . cs#get_net_compiler(net_compiler). "\\ %"
