@@ -28,7 +28,10 @@ function! s:get_net_framework_dir(version)
 endfunction
 
 function! cs#get_net_compiler(compiler)
+    cs#get_net_compiler_windows(compiler)
+endfunction
 
+function! cs#get_net_compiler_windows(compiler)
     if exists("g:net_framework_version")
         let msbuild = s:get_net_framework_dir(g:net_framework_version) . a:compiler
         return msbuild
