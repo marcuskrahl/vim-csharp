@@ -29,9 +29,9 @@ endfunction
 
 function! cs#get_net_compiler(compiler)
     if has('win32')
-        cs#get_net_compiler_windows(compiler)
+        cs#get_net_compiler_windows(a:compiler)
     else
-        cs#get_net_compiler_other(compiler)
+        cs#get_net_compiler_other(a:compiler)
     endif
 endfunction
 
