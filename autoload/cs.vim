@@ -36,7 +36,8 @@ function! cs#get_net_compiler(compiler)
 endfunction
 
 function s:get_net_compiler_other(compiler)
-    return "/usr/bin/" . a:compiler
+    let net_platform_compiler = substitute(a:compiler,"\\.exe$","","")
+    return "/usr/bin/" . net_platform_compiler
 endfunction
 
 function! s:get_net_compiler_windows(compiler)
