@@ -28,7 +28,15 @@ function! s:get_net_framework_dir(version)
 endfunction
 
 function! cs#get_net_compiler(compiler)
-    cs#get_net_compiler_windows(compiler)
+    if has('win32')
+        cs#get_net_compiler_windows(compiler)
+    else
+        cs#get_net_compiler_other(compiler)
+    endif
+endfunction
+
+function cs#get_net_compiler_other(compiler)
+    return "/usr/bin/" . a:compiler
 endfunction
 
 function! cs#get_net_compiler_windows(compiler)
