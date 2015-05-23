@@ -29,17 +29,17 @@ endfunction
 
 function! cs#get_net_compiler(compiler)
     if has('win32')
-        cs#get_net_compiler_windows(a:compiler)
+        s:get_net_compiler_windows(a:compiler)
     else
-        cs#get_net_compiler_other(a:compiler)
+        s:get_net_compiler_other(a:compiler)
     endif
 endfunction
 
-function cs#get_net_compiler_other(compiler)
+function s:get_net_compiler_other(compiler)
     return "/usr/bin/" . a:compiler
 endfunction
 
-function! cs#get_net_compiler_windows(compiler)
+function! s:get_net_compiler_windows(compiler)
     if exists("g:net_framework_version")
         let msbuild = s:get_net_framework_dir(g:net_framework_version) . a:compiler
         return msbuild
